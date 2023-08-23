@@ -6,7 +6,7 @@ using namespace std;
 /*   
     / ; () > [] ? : $ @ & %  # "" = _ !
 */
-
+int *EncontrarDireccionPuntero(int num);
 void EncontrarDireccion(int num);
 int arreglo[5] = {2, 5, 72, 65, 0};
 int arregloSize = sizeof(arreglo)/sizeof(int);
@@ -20,7 +20,7 @@ int main(){
     int num;
     cout<<"Ingrese un número: ";
     cin>>num;
-    EncontrarDireccion(num);
+    cout<<EncontrarDireccionPuntero(num);
     return 0;
 }
 
@@ -30,8 +30,18 @@ void EncontrarDireccion(int num){
     for (int i = 0; i < arregloSize; i++){
         if(num == arreglo[i]){
             ptr = (arreglo+i);
+            // ptr = &arreglo[i];
         } 
     }
     cout<<"Su dirección de memoria es "<<ptr;
-    
+}
+int *EncontrarDireccionPuntero(int num){
+    int *ptr;
+    ptr = nullptr;
+    for (int i = 0; i < arregloSize; i++){
+        if(num == arreglo[i]){
+            return (arreglo+1);
+        } 
+    }
+    return nullptr;
 }
