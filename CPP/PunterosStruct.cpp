@@ -28,12 +28,14 @@ struct BolsaValores{
     string nombreEmpresa;
     float compra;
     float venta;
-};
+}empresa;
 
 void GuardarDatos();
 void ImprimirDatos();
 void LeerTemperatura(float &actual);
 void RegistroActual(Temperatura &t);
+void LeerBolsaValores(float &actual);
+vois RegistroBolsaValores(struct BolsaValores &s);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -61,6 +63,17 @@ int main(){
         cout<<"Temperaturas: "<<temp.baja<<" - "<<temp.alta;
         Sleep(3000);
     }
+    
+    empresa.venta = 0;
+    empresa.compra = 800;
+    cout<<"Ingrese el nombre de la empresa: ";
+    cin>>empresa.nombreEmpresa;
+    cout<<"El valor de la bolsa de: "<<empresa.nombreEmpresa;<<"\n";
+    while(true){
+        RegistroBolsaValores(empresa);
+        cout<<"Valores: "<<empresa.venta<<" -- "<<empresa.float compra;
+        Sleep(2000);
+    }   
     return 0;
 }
 
@@ -114,6 +127,23 @@ void RegistroActual(Temperatura &t){
     }
     if(actual<t.alta){
         t.baja = actual;
+    }
+}
+void LeerBolsaValores(float &actual){
+    int t = time(NULL);
+    srand(t);
+    cout<<" - valor: "<<t;
+    actual = rand() % (1000+1);
+}
+void RegistroBolsaValores(struct BolsaValores &s){
+    float actual = 0;
+    LeerBolsaValores(actual);
+    cout<<" -> Lctura actual: "<<actual<<"\n";
+    if(actual>=s.venta){
+        s.venta = actual;
+    }
+    if(actual<s.compra){
+        s.compra = actual;
     }
 }
 /* / ; () > [] ? : $ @ & %  # "" = _ ! */
