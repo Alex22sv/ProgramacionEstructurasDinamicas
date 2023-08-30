@@ -7,7 +7,7 @@ using namespace std;
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
     SetConsoleOutputCP(CP_UTF8);
-    string *nombreLugarT,*nombrePais;
+    string *nombreLugarT = nullptr,*nombrePais = nullptr;
     int numRegistros;
     cout<<"¿Cuántos lugares turísticos desea registrar?";
     cin>>numRegistros;
@@ -25,6 +25,8 @@ int main(){
     }
     delete [] nombreLugarT;
     delete [] nombrePais;
+    nombreLugarT = nullptr;
+    nombrePais = nullptr;
 
     return 0;
 }
