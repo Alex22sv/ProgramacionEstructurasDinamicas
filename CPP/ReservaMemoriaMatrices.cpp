@@ -9,7 +9,7 @@ int main(){
     SetConsoleOutputCP(CP_UTF8);
     string **matriz;
     string nombreLugarT, nombrePais;
-    int numRegistros, int columnas = 2;
+    int numRegistros, columnas = 2;
     cout<<"¿Cuántos lugares turísticos desea registrar?";
     cin>>numRegistros;
     matriz = new string *[numRegistros];
@@ -19,7 +19,7 @@ int main(){
         cout<<"Ingrese el lugar turístico: ";
         cin>>matriz[i][0];
         cout<<"Ingrese el país: ";
-        cin<<matriz[i][1];
+        cin>>matriz[i][1];
     }
     for(int i = 0; i < numRegistros; i++){
         cout<<&matriz[i][0]<<" - "<<&matriz[i][1]<<" \n";

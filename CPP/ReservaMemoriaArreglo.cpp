@@ -18,7 +18,7 @@ int main(){
         cout<<"Ingrese el lugar turístico: ";
         cin>>nombreLugarT[i];
         cout<<"Ingrese el país: ";
-        cin<<nombreLugarT[i];
+        cin>>nombreLugarT[i];
     }
     for(int i = 0; i < numRegistros; i++){
         cout<<&nombreLugarT[i]<<" - "<<&nombrePais[i]<<" \n";
