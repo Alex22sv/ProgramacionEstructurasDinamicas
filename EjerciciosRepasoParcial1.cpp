@@ -26,7 +26,15 @@ int main(){
     cin>>opcion;
     while(true){
         ActualizarBombaGasolinera(bombaGasolinera, opcion);
-        cout<<"Valores: \nGasolina: "<<bombaGasolinera.cantGasolina<<"\nDiésel: "<<bombaGasolinera.cantDiesel<<"\n";
+        if(opcion==1){
+            cout<<"Valor de gasolina: "<<bombaGasolinera.cantGasolina<<"\n";
+        } else if(opcion==2){
+            cout<<"Valor de diésel: "<<bombaGasolinera.cantDiesel<<"\n";
+        }
+        if(bombaGasolinera.cantGasolina>=100||bombaGasolinera.cantDiesel>=100){
+            cout<<"\nBomba de gasolinera llena.\n";
+            return 0;
+        }
         Sleep(2000);
     }
 }
