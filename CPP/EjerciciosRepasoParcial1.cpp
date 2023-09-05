@@ -18,7 +18,7 @@ struct BombaGasolinera {
 void LeerCambioBombaGasolinera(float &actual);
 void ActualizarBombaGasolinera(struct BombaGasolinera &bm, int opcion);
 
-void ResultadosArea(float b, h, &areaT, &areaR);
+void ResultadosArea(float b, float h, float &areaT, float &areaR);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -39,7 +39,8 @@ int main(){
         }
         Sleep(2000);
     }
-    int option, valorBase, valorAltura, areaTriangulo, areaRectangulo;
+    int option;
+    float valorBase, valorAltura, areaTriangulo, areaRectangulo;
     cout<<"¿Deseas calcular el área del triángulo o del rectángulo?\n1. Triángulo\n2. Rectángulo\n...";
     cin>>option;
     cout<<"Ingrese el valor de la base: ";
@@ -75,7 +76,7 @@ void ActualizarBombaGasolinera(struct BombaGasolinera &bm, int opcion){
     }
 }
 
-void ResultadosArea(b, h, &areaT, &areaR){
+void ResultadosArea(float b, float h, float &areaT, float &areaR){
     areaT = (b*h)/2;
     areaR = b*h;
 }
