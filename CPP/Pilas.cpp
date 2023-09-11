@@ -17,6 +17,9 @@ using namespace std;
     Operaciones con pila: crear, vacía, llena, contar, insertar (push), eliminar (pop), tope
     Requiere la librería "stack"
     La raíz es el puntero que almacena la dirección del primer nodo
+    El último nodo apunta a nada, a 0
+    El primer nodo apunta al segundo, y así sucesivamente
+    Para imprimir la dirección de memoria del último elemento, llamamos a pila
 
  */
 struct Nodo {
@@ -31,7 +34,7 @@ void Insertar(int);
 void EliminarUltimo();
 void Imprimir();
 bool Vacia();
-int UltimoElemento();
+void UltimoElemento();
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -60,7 +63,7 @@ void Insertar(int n){
 void Imprimir(){
     struct Noso *temporal = pila;
     while(temporal!=NULL){
-        cout<<"Elemento de la pila: "<<temporal->elemento<<" \n";
+        cout<<"Elemento de la pila: "<<temporal->elemento<<"- "<<temporal->siguiente" \n";
         temporal = temporal->siguiente;
     }
 }
@@ -79,6 +82,6 @@ bool Vacia(){
         return true;
     }
 }
-int UltimoElemento(){
-    return pila->elemento;
+void UltimoElemento(){
+    cout<<pila->elemento<<" - "<<pila<<"\n";   
 }
