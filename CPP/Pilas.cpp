@@ -49,6 +49,8 @@ int main(){
     // EliminarUltimo(valor);
     EliminarUltimo();
     cout<<"El último elemento de la fila es: "<<UltimoElemento()<<"\n";
+    // Imprimir el tercer valor manualmente
+    // cout<<pila->siguiente->siguiente->elemento<<<<" - "<<pila->siguiente->siguiente<<"\n";
 }
 
 // Definición de variables
