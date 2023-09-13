@@ -61,9 +61,9 @@ void Insertar(int n){
     pila = nuevoNodo;
 }
 void Imprimir(){
-    struct Noso *temporal = pila;
+    struct Nodo *temporal = pila;
     while(temporal!=NULL){
-        cout<<"Elemento de la pila: "<<temporal->elemento<<"- "<<temporal->siguiente" \n";
+        cout<<"Elemento de la pila: "<<temporal->elemento<<" - "<<temporal->siguiente" \n";
         temporal = temporal->siguiente;
     }
 }
