@@ -48,7 +48,8 @@ int main(){
     Imprimir();
     // EliminarUltimo(valor);
     EliminarUltimo();
-    cout<<"El último elemento de la fila es: "<<UltimoElemento()<<"\n";
+    cout<<"El último elemento de la fila es: ";
+    UltimoElemento();
     // Imprimir el tercer valor manualmente
     // cout<<pila->siguiente->siguiente->elemento<<<<" - "<<pila->siguiente->siguiente<<"\n";
 }
@@ -65,7 +66,7 @@ void Insertar(int n){
 void Imprimir(){
     struct Nodo *temporal = pila;
     while(temporal!=NULL){
-        cout<<"Elemento de la pila: "<<temporal->elemento<<" - "<<temporal->siguiente" \n";
+        cout<<"Elemento de la pila: "<<temporal->elemento<<" - "<<temporal->siguiente<<" \n";
         temporal = temporal->siguiente;
     }
 }

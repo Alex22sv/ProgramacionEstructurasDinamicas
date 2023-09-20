@@ -26,13 +26,13 @@ using namespace std;
 
 */
 struct Nodo {
-    int elememto;
+    int elemento;
     struct Nodo *siguiente;
-}
+};
 // Variables global
 struct Nodo *frenteCola = nullptr;
-struct Nodo
-void Vacia();
+struct Nodo *finalCola = nullptr;
+bool Vacia();
 void Insertar(int);
 void Eliminar();
 void Imprimir();
@@ -46,28 +46,32 @@ int main(){
 
     int valor;
     for(int i=0;i<5;i++){
+        cout<<"Ingrese un valor: ";
         cin>>valor;
         Insertar(valor);
     }
+    cout<<"\n----------------\n";
+    Imprimir();
     cout<<"\n----------------\n";
     ImprimirFrente();
     ImprimirFinal();
     // Imprimir();
     Eliminar();
+    Imprimir();
     return 0;
 }
 
 // Operación vacía
-void Vacia(){
+bool Vacia(){
     return frenteCola == nullptr;
 }
 void Insertar(int n) {
     struct Nodo *nuevoNodo = new Nodo();
 
-    nuevoNodo->elemento = int n;
-    nuevoNodo->siguiente nullptr;
+    nuevoNodo->elemento = n;
+    nuevoNodo->siguiente = nullptr;
     if(Vacia()){
-        frenteCola = nullptr;
+        frenteCola = nuevoNodo;
     } else {
         finalCola->siguiente = nuevoNodo;
     }
