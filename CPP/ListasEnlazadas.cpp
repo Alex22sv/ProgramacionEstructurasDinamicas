@@ -11,6 +11,9 @@ struct Nodo {
     struct Nodo *siguiente;
 };
 
+// Global
+struct Nodo *lista = nullptr;
+
 void InsertarInicio(int);
 void InsertarFinal(int);
 void Imprimir();
@@ -19,6 +22,13 @@ void EliminarFinal();
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
     SetConsoleOutputCP(CP_UTF8);
+    int valor = 0;
+    for(int i=0; i<5; i++){
+        cout<<"Ingrese el valor #"<<i+1<<": ";
+        cin>>valor;
+        InsertarFinal(valor);
+    }
+    Imprimir();
     return 0;
 }
 
@@ -74,5 +84,12 @@ void EliminarInicio(){
     if(lista!=nullptr){
         lista = temporal->siguiente;
         delete temporal;
+    }
+}
+void Imprimir() {
+    struct Nodo *temporal = lista;
+    while(temporal!=nullptr){
+        cout<<"Elemento de la cola: "<<temporal->elemento<<"\n";
+        temporal = temporal->siguiente;
     }
 }

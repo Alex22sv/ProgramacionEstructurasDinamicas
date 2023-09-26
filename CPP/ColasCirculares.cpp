@@ -1,6 +1,6 @@
 /* 25/09/2023 */
 #include <iostream>
-#include <windows.h>
+//#include <windows.h>
 
 using namespace std;
 /*   
@@ -9,23 +9,23 @@ using namespace std;
 
 #define size 5
 
-struct {
+struct Nodo {
     int frenteCola;
     int finalCola;
     int elemento[size];
-} nodo;
+};
 
 void Crear(struct Nodo *);
 bool Vacia(struct Nodo *);
-bool Llena(Nodo *);
+bool Llena(struct Nodo *);
 void Insertar(struct Nodo *, int);
 void Eliminar(struct Nodo *);
-int Dimension(Nodo *);
+int Dimension(struct Nodo *);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
-    SetConsoleOutputCP(CP_UTF8);
-
+    //SetConsoleOutputCP(CP_UTF8);
+    struct Nodo nodo;
     Crear(&nodo);
     Insertar(&nodo, 1);
     Insertar(&nodo, 2);
@@ -69,13 +69,13 @@ int Dimension(Nodo *p) {
         if (p->frenteCola <= p->finalCola) {
             return p->finalCola - p->frenteCola + 1;
         } else {
-            return tamano - p->frenteCola + p->finalCola + 1;
+            return size - p->frenteCola + p->finalCola + 1;
         }
     }
 }
 // Llena
-int Llena(Nodo *p) {
-    if (Dimension(p) == tamano) {
+bool Llena(Nodo *p) {
+    if (Dimension(p) == size) {
         return true;
     } else {
         return false;
@@ -87,7 +87,7 @@ void Insertar(Nodo *p, int n) {
         if (Vacia(p)) {
             p->frenteCola = 0;
         }
-        if (p->finalCola == tamano - 1) {
+        if (p->finalCola == size - 1) {
             p->finalCola = 0;
         } else {
             p->finalCola++;
