@@ -15,6 +15,7 @@ struct Nodo {
 struct Nodo *lista = nullptr;
 
 void InsertarInicio(int);
+void InsertarIntermedio(int, int);
 void InsertarFinal(int);
 void Imprimir();
 void EliminarInicio();
@@ -22,12 +23,18 @@ void EliminarFinal();
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
     SetConsoleOutputCP(CP_UTF8);
-    int valor = 0;
+    int valor = 0, pos = 0;
     for(int i=0; i<5; i++){
         cout<<"Ingrese el valor #"<<i+1<<": ";
         cin>>valor;
         InsertarFinal(valor);
     }
+    Imprimir();
+    cout<<"Ingrese un valor para insertar en una posición: ";
+    cin>>valor;
+    cout<<"Ingrese la posición del valor: ";
+    cin>>pos;
+    InsertarIntermedio(valor, pos);
     Imprimir();
     return 0;
 }
@@ -45,6 +52,20 @@ void InsertarInicio(int n){
             lista = nuevoNodo;
         }
     }
+}
+void InsertarIntermedio(int n, int posicion){
+    struct Nodo *nuevoNodo = new Nodo();
+    struct Nodo *temporal = lista;
+    nuevoNodo->elemento = n;
+    nuevoNodo->siguiente = nullptr;
+    posicion--;
+    while(posicion!=1){
+        temporal = temporal->siguiente;
+        posicion--;
+    }
+    // Conectar el nuevoNodo a temporal
+    nuevoNodo->siguiente = temporal->siguiente;
+    temporal->siguiente = nuevoNodo;
 }
 void InsertarFinal(int n){
     struct Nodo *nuevoNodo = new Nodo();
