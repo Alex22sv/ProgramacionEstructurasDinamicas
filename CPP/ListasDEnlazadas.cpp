@@ -32,116 +32,95 @@ int main(){
     InsertarInicio(78);
     InsertarInicio(1);
     InsertarFinal(100);
-    InsertarIntermedio(3, 500);
+    Imprimir();
+    EliminarFinal();
+    EliminarInicio();
+    /* Eliminar intermedio no funciona correctamente */
+    //EliminarIntermedio(3);
+    cout<<"\nValores eliminados.\n";
+    Imprimir();
+    InsertarIntermedio(500, 2);
+    cout<<"\nInsertando intermedio de la lista.\n";
     Imprimir();
     return 0;
 }
 
-void InsertarInicio(int n)
-{
+void InsertarInicio(int n){
     struct Nodo *nuevoNodo = new Nodo();
     struct Nodo *temporal = lista;
-
     nuevoNodo->elemento = n;
     nuevoNodo->siguiente = nullptr;
     nuevoNodo->anterior = nullptr;
 
-    // Si la lista esta vacia
-    if (lista == nullptr)
-    {
+    // Si la lista esta vacía
+    if (lista == nullptr){
         lista = nuevoNodo;
-    }
-    else
-    {
-        //conexion del nuevo nodo con la lista
+    } else {
+        // Conexión del nuevo nodo con la lista
         nuevoNodo->siguiente = lista;
         lista->anterior = nuevoNodo;
-        //asignar el nuevonodo a la cabeza de la lista
+        // Asignar el nuevoNodo a la cabeza de la lista
         lista = nuevoNodo;
     }
 }
-
 // Insertar nodos al final de la lista
-void InsertarFinal(int n)
-{
+void InsertarFinal(int n){
     struct Nodo *nuevoNodo = new Nodo();
     struct Nodo *temporal = lista;
 
     nuevoNodo->elemento = n;
     nuevoNodo->siguiente = nullptr;
     nuevoNodo->anterior = nullptr;
-
     // Si la lista esta vacia
-    if (lista == nullptr)
-    {
+    if (lista == nullptr){
         lista = nuevoNodo;
-    }
-    else
-    {
-        while (temporal->siguiente != nullptr)
-        {
+    } else {
+        while (temporal->siguiente != nullptr){
             temporal = temporal->siguiente;
         }
-        //conexiones de nuevonodo a temporal
+        // Conexiones de nuevoNodo a temporal
         temporal->siguiente = nuevoNodo;
         nuevoNodo->anterior = temporal;
     }
 }
-
 // Insertar intermedio
-void InsertarIntermedio(int n, int posicion)
-{
-
+void InsertarIntermedio(int n, int posicion){
     // Reserva de memoria
     struct Nodo *nuevoNodo = new Nodo();
     // Variable auxiliar almacena el nodo actual
     struct Nodo *temporal = lista;
     struct Nodo *temporal2;
-
     nuevoNodo->elemento = n;
     nuevoNodo->siguiente = nullptr;
     nuevoNodo->anterior = nullptr;
-
     posicion--;
-    while (posicion != 1)
-    {
+    while(posicion != 1){
         temporal = temporal->siguiente;
         posicion--;
     }
-    //Conexiones del nuevoNodo con la lista 
+    // Conexiones del nuevoNodo con la lista 
     temporal2 = temporal->siguiente;
     temporal->siguiente = nuevoNodo;
     temporal2->anterior = nuevoNodo;
     nuevoNodo->siguiente = temporal2;
     nuevoNodo->anterior = temporal;
 }
-
-
-
-
 // Borrar el primer nodo de la lista
-void EliminarInicio()
-{
+void EliminarInicio(){
     struct Nodo *temporal = lista;
-
-    if (lista != nullptr)
-    {
-        if (temporal->siguiente != nullptr)
-        {
+    if (lista != nullptr){
+        if (temporal->siguiente != nullptr){
             lista = lista->siguiente;
             delete temporal;
             // temporal = nullptr;
             lista->anterior = nullptr;
-        }
-        else
-        {
+        } else {
             delete lista;
             lista = nullptr;
         }
     }
-    else
-    {
-        cout << "Lista vacia";
+    else {
+        cout<<"Lista vacía";
     }
 }
 void EliminarIntermedio(int posicion){
@@ -158,20 +137,16 @@ void EliminarIntermedio(int posicion){
     temporal3->anterior = temporal2;
     delete temporal;
     temporal = nullptr;
-
 }
-// Borrar el ultimo nodo de la lista
-void EliminarFinal()
-{
+// Borrar el último nodo de la lista
+void EliminarFinal(){
     struct Nodo *temporal = lista;
     struct Nodo *temporal2 = nullptr;
-
     if (lista != nullptr){
         if (temporal->siguiente != nullptr){
             while (temporal->siguiente != nullptr){
                 temporal = temporal->siguiente;
             }
-
             temporal2 = temporal->anterior;
             temporal2->siguiente = nullptr;
             delete temporal;
@@ -179,24 +154,19 @@ void EliminarFinal()
             delete lista;
             lista = nullptr;
         }
-    }
-    else{
-        cout << "Lista vacia";
+    } else {
+        cout<<"Lista vacía";
     }
 }
 void Imprimir(){
     struct Nodo *temporal = lista;
-    if (temporal != nullptr)
-    {
+    if (lista != nullptr){
         // Imprimir cuando se inserta al final de la lista
-        while (temporal != nullptr)
-        {
-            cout << "Lista " << temporal->elemento << " Direccion " << temporal << " Dir siguiente " << temporal->siguiente << " Dir anterior " << temporal->anterior << endl;
+        while (temporal != nullptr){
+            cout<<"Elemento: "<<temporal->elemento<<" - Dirección actual: "<<temporal<<" - Dirección siguiente: "<<temporal->siguiente<<" - Dirección anterior: "<<temporal->anterior<<".\n";
             temporal = temporal->siguiente;
         }
-    }
-    else
-    {
-        cout << "Lista vacia";
+    } else {
+        cout<<"Lista vacía";
     }
 }

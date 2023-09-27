@@ -72,13 +72,13 @@ void InsertarFinal(int n){
     struct Nodo *temporal = lista;
     nuevoNodo->elemento = n;
     nuevoNodo->siguiente = nullptr;
-    if(nuevoNodo!=nullptr){
+    if(lista==nullptr){
+        lista = nuevoNodo;
+    } else {
         while(temporal->siguiente!=nullptr){
             temporal = temporal->siguiente;
         }
         temporal->siguiente = nuevoNodo;
-    } else {
-        cout<<"No se pueden crear más nodos.";
     }
 }
 void EliminarInicio(){
@@ -86,6 +86,8 @@ void EliminarInicio(){
     if(lista!=nullptr){
         lista = temporal->siguiente;
         delete temporal;
+    } else {
+        cout<<"Lista vacía.\n";
     }
 }
 void EliminarIntermedio(int posicion){
@@ -124,8 +126,12 @@ void EliminarFinal(){
 }
 void Imprimir() {
     struct Nodo *temporal = lista;
-    while(temporal!=nullptr){
-        cout<<"Elemento de la cola: "<<temporal->elemento<<"\n";
-        temporal = temporal->siguiente;
+    if(lista!=nullptr){
+        while(temporal!=nullptr){
+            cout<<"Elemento de la cola: "<<temporal->elemento<<" - Dirección actual: "<<temporal<<" - Dirección siguiente: "<<temporal->siguiente<<"\n";
+            temporal = temporal->siguiente;
+        }
+    } else {
+        cout<<"Lista vacía.\n";
     }
 }
