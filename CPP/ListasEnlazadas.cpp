@@ -19,6 +19,7 @@ void InsertarIntermedio(int, int);
 void InsertarFinal(int);
 void Imprimir();
 void EliminarInicio();
+void EliminarIntermedio(int);
 void EliminarFinal();
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -42,15 +43,14 @@ int main(){
 void InsertarInicio(int n){
     struct Nodo *nuevoNodo = new Nodo();
     struct Nodo *temporal = lista;
-    if(nuevoNodo!=nullptr){
-        nuevoNodo->siguiente = nullptr;
-        if(lista==nullptr){
-            lista = nuevoNodo;
-        } else {
-            // Agregar nodo al inicio
-            nuevoNodo->siguiente = lista;
-            lista = nuevoNodo;
-        }
+    nuevoNodo->elemento = n;
+    nuevoNodo->siguiente = nullptr;
+    if(lista==nullptr){
+        lista = nuevoNodo;
+    } else {
+        // Agregar nodo al inicio
+        nuevoNodo->siguiente = lista;
+        lista = nuevoNodo;
     }
 }
 void InsertarIntermedio(int n, int posicion){
@@ -70,6 +70,8 @@ void InsertarIntermedio(int n, int posicion){
 void InsertarFinal(int n){
     struct Nodo *nuevoNodo = new Nodo();
     struct Nodo *temporal = lista;
+    nuevoNodo->elemento = n;
+    nuevoNodo->siguiente = nullptr;
     if(nuevoNodo!=nullptr){
         while(temporal->siguiente!=nullptr){
             temporal = temporal->siguiente;
@@ -78,6 +80,26 @@ void InsertarFinal(int n){
     } else {
         cout<<"No se pueden crear más nodos.";
     }
+}
+void EliminarInicio(){
+    struct Nodo *temporal = lista;
+    if(lista!=nullptr){
+        lista = temporal->siguiente;
+        delete temporal;
+    }
+}
+void EliminarIntermedio(int posicion){
+    struct Nodo *temporal = lista;
+    struct Nodo *temporal2;
+    while(posicion!=1){
+        temporal2 = temporal;
+        temporal = temporal->siguiente;
+        posicion--;
+    }
+    temporal2 = temporal->siguiente;
+    temporal->siguiente = temporal2;
+    delete temporal;
+    temporal = nullptr;
 }
 void EliminarFinal(){
     struct Nodo *temporal = lista;
@@ -98,13 +120,6 @@ void EliminarFinal(){
             delete lista;
             lista = nullptr;
         }
-    }
-}
-void EliminarInicio(){
-    struct Nodo *temporal = lista;
-    if(lista!=nullptr){
-        lista = temporal->siguiente;
-        delete temporal;
     }
 }
 void Imprimir() {
