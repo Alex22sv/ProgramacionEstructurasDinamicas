@@ -125,18 +125,21 @@ void EliminarInicio(){
 }
 void EliminarIntermedio(int posicion){
     struct Nodo *temporal = lista;
-    struct Nodo *temporal2;
-    struct Nodo *temporal3;
-    while(posicion!=1){
-        temporal2 = temporal;
+    int i = 1;
+    while((temporal!=nullptr) && (i < posicion)){
         temporal = temporal->siguiente;
-        temporal3 = temporal->siguiente;
-        posicion--;
+        i++;
     }
-    temporal2->siguiente = temporal3;
-    temporal3->anterior = temporal2;
-    delete temporal;
-    temporal = nullptr;
+    /* while((temporal!=nullptr)&&(temporal->elemento!=valor)){
+        temporal = temporal->siguiente;
+    } */
+    if(temporal!=nullptr){
+        temporal->anterior->siguiente = temporal->siguiente;
+        temporal->siguiente->anterior = temporal->anterior;
+        delete temporal;
+    } else {
+        cout<<"No se pudo encontrar."; 
+    }
 }
 // Borrar el último nodo de la lista
 void EliminarFinal(){
