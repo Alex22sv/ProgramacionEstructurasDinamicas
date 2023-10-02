@@ -35,7 +35,7 @@ int main(){
 }
 
 void InsertarInicio(int n){
-    struct Nodo *nuevoNodo;
+    struct Nodo *nuevoNodo = new Nodo();
     struct Nodo *temporal;
     nuevoNodo->elemento = n;
     if(lista == nullptr){
@@ -49,7 +49,7 @@ void InsertarInicio(int n){
     }
 }
 void InsertarFinal(int n){
-    struct Nodo *nuevoNodo;
+    struct Nodo *nuevoNodo = new Nodo();
     struct Nodo *temporal;
     nuevoNodo->elemento = n;
     if(lista == nullptr){
@@ -59,18 +59,83 @@ void InsertarFinal(int n){
     } else {
         temporal->siguiente = nuevoNodo;
         nuevoNodo->siguiente = lista;
-        //temporal = nuevoNodo;
+        temporal = nuevoNodo;
     }
 }
+void InsertarIntermedio(int n, int posicion){
+    struct Nodo *nuevoNodo = new Nodo();
+    // Variable auxiliar almacena el nodo actual
+    struct Nodo *temporal = lista;
+    nuevoNodo->elemento = n;
+    nuevoNodo->siguiente = nullptr;
+    posicion--;
+    while (posicion != 1){
+        temporal = temporal->siguiente;
+        posicion--;
+    }
+    // conexión del nuevoNodo con el resto de nodos de la lista
+    nuevoNodo->siguiente = temporal->siguiente;
+    // Asignar el nuevoNodo a la lista
+    temporal->siguiente = nuevoNodo;
+}
 void EliminarInicio(){
-    if(){
-
-    } else {
+    struct Nodo *temporal = lista;
+    if(lista != nullptr){
         while(temporal->siguiente!=lista){
             temporal = temporal->siguiente;
         }
         temporal->siguiente = lista->siguiente;
         delete lista;
         lista = temporal->siguiente;
+    } else if (lista->siguiente == lista){
+        delete lista;
+        lista = nullptr;
+    } else {
+        cout<<"La lista está vacía\n";
     }
+}
+void EliminarFinal()
+{
+    struct Nodo *temporal = lista;
+    struct Nodo *temporal2;
+    if (lista != nullptr){
+        // Si hay mas de un elemento en la lista
+        while (temporal->siguiente != lista){
+            temporal2 = temporal;
+            temporal = temporal->siguiente;
+        }
+        temporal2->siguiente = temporal->siguiente;
+        delete temporal;
+    } else if (lista->siguiente == lista) {
+        // SI SOLO HAY UN ELEMENTO
+        delete lista;
+        lista = nullptr;
+    } else {
+        cout<<"La lista está vacía.\n";
+    }
+}
+void EliminarIntermedio(int posicion){
+    struct Nodo *temporal = lista;
+    struct Nodo *temporal2;
+    while (posicion != 1){
+        temporal2 = temporal;
+        temporal = temporal->siguiente;
+        posicion--;
+    }
+    // conexión del nuevoNodo con el resto de nodos de la lista
+    temporal2->siguiente = temporal->siguiente;
+    delete temporal;
+    temporal = nullptr;
+}
+void Imprimir(){
+    struct Nodo *temporal = lista;
+    if (lista != nullptr){
+        do {
+            cout<<"Elemento: "<<temporal->elemento<<" - Dirección: "<<temporal<<" - Siguiente: "<<temporal->siguiente<<"\n";
+            temporal = temporal->siguiente;
+        } while (temporal != lista);
+    } else {
+        cout<<"La lista está vacía.\n";
+    }
+    cout<<"\n---------------------\n";
 }
