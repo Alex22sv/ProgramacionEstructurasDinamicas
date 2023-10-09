@@ -41,13 +41,33 @@ struct Nodo *Crear(int);
 struct Nodo *Insertar(struct Nodo *, int);
 void Borrar(struct Nodo *&, int n);
 void Buscar(struct Nodo *&, int, struct Nodo *&);
-struct Nodo BuscarMenor(struct Nodo *);
+void BuscarMenor(struct Nodo *&, struct Nodo *&);
+void InOrden(struct Nodo *);
 void PreOrden(struct Nodo *);
 void PostOrden(struct Nodo *);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
     SetConsoleOutputCP(CP_UTF8);
+    int valor = 0, contador = 0;
+    cout<<"¿Cuántos valores desea agregar? ";
+    cin>>contador;
+    for(int i = 0; i < contador; i++){
+        cout<<"Ingrese un valor: ";
+        cin>>valor;
+        ABB = Insertar(ABB, valor);
+    }
+    cout<<"\nIn Orden: \n";
+    InOrden(ABB);
+    cout<<"\nPre Orden: \n";
+    PreOrden(ABB);
+    cout<<"\nPost Orden: \n";
+    PostOrden(ABB);
+    cout<<"\n¿Qué valor desea borrar? ";
+    cin>>valor;
+    Borrar(ABB, valor);
+    cout<<"Mostrando valores In Orden: \n";
+    InOrden(ABB);
     return 0;
 }
 
@@ -94,7 +114,8 @@ void Borrar(Nodo *&ABB, int n){
     } else if ((aux->izquierdo) && (aux->derecho)){
         // Borrar nodo con 2 hijos (hijos en der. e izq.)
         //Buscamos en el subárbol derecho el nodo menor
-        struct Nodo *sucesor = BuscarMenor(aux->derecho);
+        struct Nodo *sucesor;
+        BuscarMenor(ABB, sucesor);
         int val = sucesor->dato;
         Borrar(ABB, sucesor->dato);
         aux->dato = val;
@@ -117,7 +138,7 @@ void Borrar(Nodo *&ABB, int n){
         }
     }
 }
-void Buscar( struct Nodo *&ABB, int n, struct Nodo *&padre){
+void Buscar(struct Nodo *&ABB, int n, struct Nodo *&padre){
     while((ABB!=nullptr) && (ABB->dato!=n)){
         padre = ABB;
         if(n<ABB->dato){
@@ -127,18 +148,18 @@ void Buscar( struct Nodo *&ABB, int n, struct Nodo *&padre){
         }
     }
 }
-struct Nodo *BuscarMenor(struct nodo *ABB){
-    while(ABB!=nullptr){
-        ABB = ABB->izquierdo;
+void BuscarMenor(struct Nodo *&ABB, struct Nodo *&aux){
+    while(aux!=nullptr){
+        aux = aux->izquierdo;
     }
-    return ABB;
+    ABB = aux;
 }
 void InOrden(struct Nodo *ABB){
     if(ABB==nullptr){
         return;
     } else {
         InOrden(ABB->izquierdo);
-        cout<<ABB->dato<<" - ";
+        cout<<ABB->dato<<" | ";
         InOrden(ABB->derecho);
     }
 }
@@ -146,7 +167,7 @@ void PreOrden(struct Nodo *ABB){
     if(ABB==nullptr){
         return;
     } else {
-        cout<<ABB->dato<<" - ";
+        cout<<ABB->dato<<" | ";
         PreOrden(ABB->izquierdo);
         PreOrden(ABB->derecho);
     }
@@ -157,6 +178,6 @@ void PostOrden(struct Nodo *ABB){
     } else {
         PostOrden(ABB->izquierdo);
         PostOrden(ABB->derecho);
-        cout<<ABB->dato<<" - ";
+        cout<<ABB->dato<<" | ";
     }
 }
