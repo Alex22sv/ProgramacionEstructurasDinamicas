@@ -46,6 +46,8 @@ void InOrden(struct Nodo *);
 void PreOrden(struct Nodo *);
 void PostOrden(struct Nodo *);
 int ObtenerRaiz(struct Nodo *);
+int ObtenerValorMenor(struct Nodo *);
+int ObtenerValorMayor(struct Nodo *);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -59,6 +61,8 @@ int main(){
         ABB = Insertar(ABB, valor);
     }
     cout<<"\nValor de la raíz: "<<ObtenerRaiz(ABB)<<"\n";
+    cout<<"\nValor más pequeño: "<<ObtenerValorMenor(ABB)<<"\n";
+    cout<<"\nValor más grande: "<<ObtenerValorMayor(ABB)<<"\n";
     cout<<"\nIn Orden: \n";
     InOrden(ABB);
     cout<<"\nPre Orden: \n";
@@ -68,8 +72,12 @@ int main(){
     cout<<"\n¿Qué valor desea borrar? ";
     cin>>valor;
     Borrar(ABB, valor);
-    cout<<"Mostrando valores In Orden: \n";
+    cout<<"\nIn Orden: \n";
     InOrden(ABB);
+    cout<<"\nPre Orden: \n";
+    PreOrden(ABB);
+    cout<<"\nPost Orden: \n";
+    PostOrden(ABB);
     return 0;
 }
 
@@ -189,4 +197,18 @@ int ObtenerRaiz(struct Nodo *ABB){
     } else {
         return ABB->dato;
     }
+}
+int ObtenerValorMenor(struct Nodo *ABB){
+    struct Nodo *aux = ABB;
+    while((aux)&&(aux->izquierdo!=NULL)){
+        aux = aux->izquierdo;
+    }
+    return aux->dato;
+}
+int ObtenerValorMayor(struct Nodo *ABB){
+    struct Nodo *aux = ABB;
+    while((aux)&&(aux->derecho!=NULL)){
+        aux = aux->derecho;
+    }
+    return aux->dato;
 }
