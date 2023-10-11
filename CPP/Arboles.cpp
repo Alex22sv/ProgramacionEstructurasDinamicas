@@ -45,6 +45,7 @@ void BuscarMenor(struct Nodo *&, struct Nodo *&);
 void InOrden(struct Nodo *);
 void PreOrden(struct Nodo *);
 void PostOrden(struct Nodo *);
+int ObtenerRaiz(struct Nodo *);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -57,6 +58,7 @@ int main(){
         cin>>valor;
         ABB = Insertar(ABB, valor);
     }
+    cout<<"\nValor de la raíz: "<<ObtenerRaiz(ABB)<<"\n";
     cout<<"\nIn Orden: \n";
     InOrden(ABB);
     cout<<"\nPre Orden: \n";
@@ -179,5 +181,12 @@ void PostOrden(struct Nodo *ABB){
         PostOrden(ABB->izquierdo);
         PostOrden(ABB->derecho);
         cout<<ABB->dato<<" | ";
+    }
+}
+int ObtenerRaiz(struct Nodo *ABB){
+    if(ABB==nullptr){
+        return -1;
+    } else {
+        return ABB->dato;
     }
 }
