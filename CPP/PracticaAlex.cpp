@@ -56,7 +56,7 @@ void MostrarOrdenes();
 void MostrarIdOrdenes(string);
 
 int main(){
-    //SetConsoleOutputCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
     IniciarSesion();
     return 0;
 };
@@ -155,6 +155,8 @@ void Menu(){
                     nuevaOrden.direccionDomicilio = "local";
                 }
                 AgregarOrden(nuevaOrden);
+                system("pause");
+                system("cls");
                 break;
             case 2:
                 // Agregar orden a restaurante
@@ -216,35 +218,51 @@ void Menu(){
                     nuevaOrden.direccionDomicilio = "local";
                 }
                 AgregarOrden(nuevaOrden);
+                system("pause");
+                system("cls");
                 break;
             case 3:
                 // Despachar órdenes a domicilio
                 DespacharOrden("A domicilio");
+                system("pause");
+                system("cls");
                 break;
             case 4:
                 // Despachar órdenes a restaurante
                 DespacharOrden("En restaurante");
+                system("pause");
+                system("cls");
                 break;
             case 5:
                 // Cancelar orden (solo administrador)
                 CancelarOrden();
+                system("pause");
+                system("cls");
                 break;
             case 6: 
                 // Calcular total de ventas
                 cout<<"El total de ventas es: $"<<TotalVentas()<<"\n";
+                system("pause");
+                system("cls");
                 break;
             case 7:
                 // Mostar órdenes activas
                 MostrarOrdenes();
+                system("pause");
+                system("cls");
                 break;
             case 8:
                 // Cerrar sesión
                 cout<<"Cerrando sesión, saliendo del sistema...";
                 mantenerEnSistema = false;
+                system("pause");
+                system("cls");
                 break;
             default:
                 // Has ingresado una opción no válida.
                 cout<<"Has ingresado una opción no válida, inténtalo de nuevo.";
+                system("pause");
+                system("cls");
                 break;
         }
     }
