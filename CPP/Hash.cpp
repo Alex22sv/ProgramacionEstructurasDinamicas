@@ -20,8 +20,9 @@ struct Nodo *lista = nullptr;
 
 // Declaración de funciones
 void Agregar(int);
-void F_Hash(int);
+int F_Hash(int);
 void Imprimir();
+struct Nodo *Buscar(int, int);
 void EliminarR(int);
 
 int main(){
@@ -52,7 +53,7 @@ int main(){
     Agregar(1);
     Agregar(5);
     Agregar(9);
-    Agregsr(76);
+    Agregar(76);
     Imprimir();
     EliminarR(34);
     return 0;
@@ -67,22 +68,21 @@ void Agregar(int _dato){
     nuevoNodo->anterior = nullptr;
     nuevoNodo->siguiente = tabla[clave];
     if(tabla[clave]){
-        tabla[clave]->siguiente = nuevoNodo;
+        tabla[clave]->anterior = nuevoNodo;
     }
     tabla[clave] = nuevoNodo;
-    cout<<"Dirección: "<<tabla[clave]<<" - Clave (índice): "<<clave<<" - Dato almacenado: "<<tabla[clave].registro.dato<<"\n";
+    cout<<"Dirección: "<<tabla[clave]<<" - Clave (índice): "<<clave<<" - Dato almacenado: "<<tabla[clave]->registro.dato<<"\n";
 }
 int F_Hash(int _dato){
     return _dato % size;
 }
 void Imprimir(){
-    struct Nodo *temporal;
     for(int i = 0; i < size; i++){
+        struct Nodo *temporal;
         temporal = tabla[i];
-        if(temporal!=nullptr){ 
-            while(temporal!=nullptr){
-                 cout<<"Dirección: "<<tabla[clave]<<" - Clave (índice): "<<i<<" - Dato almacenado: "<<tabla[i].registro.dato<<"\n";
-            }
+        while(temporal!=nullptr){
+            cout<<"Dirección: "<<tabla[i]<<" - Clave (índice): "<<i<<" - Dato almacenado: "<<tabla[i]->registro.dato<<"\n";
+            temporal = temporal->siguiente; 
         }
     }
 }

@@ -1,7 +1,11 @@
+/* 25/10/2023 */
 #include <iostream>
 #include <windows.h>
 
 using namespace std;
+/*   
+    / ; () > [] ? : $ @ & %  # "" = _ !
+*/
 
 #define dimension 7
 
@@ -30,6 +34,7 @@ int ConvertirArregloAscii(string arreglo);
 char ConvertirAsciiCaracter(int ascii);
 
 int main(void){
+    // Función que permite mostrar los caracteres especiales en la terminal
     SetConsoleOutputCP(CP_UTF8);
     string valorAPedir;
     /* Agregar(12);
