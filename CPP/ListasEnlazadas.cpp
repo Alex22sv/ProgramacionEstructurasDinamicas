@@ -36,6 +36,10 @@ int main(){
     cout<<"Ingrese la posición del valor: ";
     cin>>pos;
     InsertarIntermedio(valor, pos);
+    cout<<"Eliminando el valor inicial.\n";
+    EliminarInicio();
+    cout<<"Eliminando el valor final.\n";
+    EliminarFinal();
     Imprimir();
     return 0;
 }

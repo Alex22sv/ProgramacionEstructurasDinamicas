@@ -15,9 +15,11 @@ struct Nodo *lista = nullptr;
 
 void InsertarInicio(int);
 void InsertarFinal(int);
+void InsertarIntermedio(int, int);
 void Imprimir();
 void EliminarInicio();
 void EliminarFinal();
+void EliminarIntermedio(int);
 
 int main(){
     // Función que permite mostrar los caracteres especiales en la terminal
@@ -30,6 +32,10 @@ int main(){
     InsertarFinal(5);
     InsertarFinal(9);
     InsertarFinal(12);
+    Imprimir();
+    EliminarInicio();
+    EliminarFinal();
+    EliminarIntermedio(3);
     Imprimir();
     return 0;
 }

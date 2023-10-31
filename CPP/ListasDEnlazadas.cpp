@@ -35,8 +35,7 @@ int main(){
     Imprimir();
     EliminarFinal();
     EliminarInicio();
-    /* Eliminar intermedio no funciona correctamente */
-    //EliminarIntermedio(3);
+    EliminarIntermedio(2);
     cout<<"\nValores eliminados.\n";
     Imprimir();
     InsertarIntermedio(500, 2);
@@ -125,21 +124,18 @@ void EliminarInicio(){
 }
 void EliminarIntermedio(int posicion){
     struct Nodo *temporal = lista;
-    int i = 1;
-    while((temporal!=nullptr) && (i < posicion)){
+    struct Nodo *temporal2;
+    struct Nodo *temporal3;
+    while(posicion!=1){
+        temporal2 = temporal;
         temporal = temporal->siguiente;
-        i++;
+        temporal3 = temporal->siguiente;
+        posicion--;
     }
-    /* while((temporal!=nullptr)&&(temporal->elemento!=valor)){
-        temporal = temporal->siguiente;
-    } */
-    if(temporal!=nullptr){
-        temporal->anterior->siguiente = temporal->siguiente;
-        temporal->siguiente->anterior = temporal->anterior;
-        delete temporal;
-    } else {
-        cout<<"No se pudo encontrar."; 
-    }
+    temporal2->siguiente = temporal3;
+    temporal3->anterior = temporal2;
+    delete temporal;
+    temporal = nullptr;
 }
 // Borrar el último nodo de la lista
 void EliminarFinal(){

@@ -53,8 +53,6 @@ int main(){
     cout<<"\n----------------\n";
     Imprimir();
     cout<<"\n----------------\n";
-    ImprimirFrente();
-    ImprimirFinal();
     // Imprimir();
     Eliminar();
     Imprimir();
@@ -101,11 +99,11 @@ void ImprimirFrente() {
     if(frenteCola==nullptr){
         cout<<"La cola está vacía.";
     }
-    cout<<frenteCola->elemento<<"\n";
+    cout<<"Frente de la cola: "<<frenteCola->elemento<<"\n";
 }
 void ImprimirFinal() {
     if(finalCola==nullptr){
         cout<<"La cola está vacía.";
     }
-    cout<<finalCola->elemento<<"\n";
+    cout<<"Final de la cola: "<<finalCola->elemento<<"\n";
 }
